@@ -6,8 +6,11 @@ test("Can instantiate Employee instance", () => {
 });
 
 test("Can set name via constructor arguments", () => {
+  //act
   const name = "Alice";
+  //arrange
   const e = new Employee(name);
+  //assert
   expect(e.name).toBe(name);
 });
 
