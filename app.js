@@ -10,48 +10,159 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employeeList = [];
 
 // ASK for manager info: name, id, email, office phone number
 function askManagerInfo () {
     return inquirer.prompt([
         {
-            message: "What is your name, Manager?",
+            message: "What is your manager's name?",
             name: "name",
             type: "input"
+        },
+        {
+            message: "What is your manager's id?",
+            name: "id",
+            type: "number"
+        },
+        {
+            message: "What is your manager's email?",
+            name: "email",
+            type: "input"
+        },
+        {
+            message: "What is your manager's office number?",
+            name: "officeNumber",
+            type: "number"
         }
     ]).then((response) => {
         //
-        const newManager = new Manager(response);
-    });
+        const newManager = new Manager(
+            response.name,
+            response.id,
+            response.email,
+            response.officeNumber
+        );
+        employeeList.push(newManager);
+        askEmployeeType();
+    }).catch((error) => {
+        console.log(error);
+    })
 }
 
 // ASK user for next employee TYPE (engineer, intern, dont want to add more)
 function askEmployeeType () {
-
+    return inquirer.prompt([
+        {
+            message: "What is the employee type?",
+            type: "list",
+            choices: ["Engineer", "Intern", new inquirer.Separator(), "I don't want to add more."],
+            name: "data"
+        }
+    ]).then((response) => {
+        if(response.data === "Engineer") {
+            askEngineerInfo();
+        } else if (response.data === "Intern") {
+            askInternInfo();
+        } else {
+            //i dont want to add more = exit
+            //output to team.html
+            renderFile();
+        }
+    }).catch((error) => {
+        console.log(error);
+    })
 }
 
 //ASK user for enginner info
 function askEngineerInfo() {
     // name, id, email, github username
+    return inquirer.prompt([
+        {
+            message: "What is your engineer's name?",
+            name: "name",
+            type: "input"
+        },
+        {
+            message: "What is your engineer's id?",
+            name: "id",
+            type: "number"
+        },
+        {
+            message: "What is your engineer's email?",
+            name: "email",
+            type: "input"
+        },
+        {
+            message: "What is your engineer's github?",
+            name: "github",
+            type: "input"
+        }
+    ]).then((response) => {
+        //
+        const newEngineer = new Engineer(
+            response.name,
+            response.id,
+            response.email,
+            response.github
+        );
+        employeeList.push(newEngineer);
+        askEmployeeType();
+    }).catch((error) => {
+        console.log(error);
+    })
 }
 
 //ASK user for intern info
 function askInternInfo() {
     //name, id, email, school
+    return inquirer.prompt([
+        {
+            message: "What is your intern's name?",
+            name: "name",
+            type: "input"
+        },
+        {
+            message: "What is your intern's id?",
+            name: "id",
+            type: "number"
+        },
+        {
+            message: "What is your intern's email?",
+            name: "email",
+            type: "input"
+        },
+        {
+            message: "What school does your intern attened, or go to?",
+            name: "school",
+            type: "input"
+        },
+    ]).then((response) => {
+        //
+        const newIntern = new Intern(
+            response.name,
+            response.id,
+            response.email,
+            response.school
+        );
+        employeeList.push(newIntern);
+        askEmployeeType();
+    }).catch((error) => {
+        console.log(error);
+    })
 }
 
-//i dont want to add more = exit
-
-//output to team.html
-
-
-
-
-
-
-
-
-
+//renderfile function
+function renderFile(){
+    const fileInfo=render(employeeList);
+    fs.writeFile("outputs/team.html", fileInfo, (error)=> {
+        if(error) {
+            console.log("Error: ", error)
+        } else console.log("Success!")
+    });
+}
+//start the app
+askManagerInfo();
 
 
 
