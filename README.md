@@ -15,7 +15,7 @@ This is a node console application where you will answer a series of questions a
 
 ## Example Output
 ![Image of Application](./images/example-output.png "Screenshot of Terminal Output of App")
-![Image of Rendered HTML](./images/example-HTML-render.png "SS of Rendered HTML")
+![Image of Rendered HTML](./images/example-html-render.png "SS of Rendered HTML")
 
 ### Links
 
