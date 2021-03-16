@@ -13,6 +13,10 @@ This is a node console application where you will answer a series of questions a
 5. Type `node app.js` to run the application.
 6. Follow the prompts to completion, and the HTML file will output into the "outputs" folder inside the root directory.
 
+## Example Output
+![Image of Application](./images/example-output.png "Screenshot of Terminal Output of App")
+![Image of Rendered HTML](./images/example-HTML-render.png "SS of Rendered HTML")
+
 ### Links
 
 No Deployed application for this assignment, follow [Installation] instructions to use.
