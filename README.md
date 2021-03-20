@@ -14,6 +14,8 @@ This is a node console application where you will answer a series of questions a
 6. Follow the prompts to completion, and the HTML file will output into the "outputs" folder inside the root directory.
 
 ## Example Output
+[Video Demo Link](https://drive.google.com/file/d/19_efxkc9gkZifgCiOYsJm1xI_DEbGVRn/view)
+
 ![Image of Application](./images/example-output.png "Screenshot of Terminal Output of App")
 ![Image of Rendered HTML](./images/example-html-render.png "SS of Rendered HTML")
 
@@ -22,3 +24,5 @@ This is a node console application where you will answer a series of questions a
 No Deployed application for this assignment, follow [Installation] instructions to use.
 
 [GitHub Repo](https://github.com/epowelldev/u10-employee-summary)
+
+[Demo Link](https://drive.google.com/file/d/19_efxkc9gkZifgCiOYsJm1xI_DEbGVRn/view)
